@@ -104,4 +104,4 @@ class ElevenLabsAPI(AudioInterface):
             stream=True
         )
 
-        yield from elevenlabs.stream(elevenlabs_stream)
+        yield from elevenlabs_stream

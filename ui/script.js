@@ -36,6 +36,7 @@ document.getElementById('captureFrame').addEventListener('click', async () => {
         };
 
         try {
+            const audioPlayer = document.getElementById('audioPlayer');
             const response = await fetch('http://127.0.0.1:8000/narrate_stream', {
                 method: 'POST',
                 headers: {
@@ -43,19 +44,12 @@ document.getElementById('captureFrame').addEventListener('click', async () => {
                 },
                 body: JSON.stringify(payload)
             });
-            if (response.body) {
-                const reader = response.body.getReader();
-                const streamOutput = document.getElementById('streamOutput');
-                streamOutput.value += narrator + ': ';
-                while (true) {
-                    const { done, value } = await reader.read();
-                    if (done) {
-                        streamOutput.value += '\n';
-                        break
-                    }
-                    // Append received stream text to the text box
-                    streamOutput.value += new TextDecoder().decode(value); // Append a newline after each output
-                }
+
+            if (response.ok) {
+                audioPlayer.src = URL.createObjectURL(await response.blob());
+                audioPlayer.play();
+            } else {
+                console.error('Stream not available');
             }
         } catch (error) {
             console.error('Error sending frame:', error);
@@ -64,6 +58,7 @@ document.getElementById('captureFrame').addEventListener('click', async () => {
         console.error('Webcam is not active');
     }
 });
+
 
 document.getElementById('clearOutput').addEventListener('click', () => {
     document.getElementById('streamOutput').value = ''; // Clear the textarea
