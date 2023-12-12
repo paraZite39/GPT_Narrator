@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webcam Narrator</title>
+       <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #webcam {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        select, textarea {
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+        }
+        textarea {
+            width: 80%;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Webcam Narrator</h1>
+    <video id="webcam" width="640" height="480" autoplay></video>
+
+    <div>
+        <button class="button" id="captureFrame">Capture and Send Frame</button>
+    </div>
+
+    <div>
+        <label for="voiceSelect">Choose a Narrator:</label>
+        <select id="voiceSelect">
+            <option value="Sir David Attenborough">Sir David Attenborough</option>
+            <option value="Morgan Freeman">Morgan Freeman</option>
+        </select>
+    </div>
+
+    <!-- <div><textarea id="streamOutput" readonly></textarea></div>
+
+    <button class="button" id="clearOutput">Clear Output</button> -->
+
+    <script src="script.js"></script>
+</body>
+</body>
+</html>
