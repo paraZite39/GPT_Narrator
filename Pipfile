@@ -7,6 +7,10 @@ name = "pypi"
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
 openai = "*"
+opencv-python = "*"
+pillow = "*"
+requests = "*"
+elevenlabs = "*"
 
 [dev-packages]
 
